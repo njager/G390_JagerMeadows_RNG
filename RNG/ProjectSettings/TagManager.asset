@@ -6,14 +6,13 @@ TagManager:
   tags:
   - Goal
   - Wall
-  - onewaytrigger
-  - oneway
-  - respawn
+  - onewall
   - conveyor
   - ice
-  - onewall
-  - onewaytrigger1
-  - onewaytrigger2
+  - respawn
+  - onewaytrigger
+  - oneway
+  - powerup
   layers:
   - Default
   - TransparentFX
@@ -21,7 +20,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Background
   - 
   - 
   - 

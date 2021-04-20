@@ -30,6 +30,10 @@ public class GameController : MonoBehaviour
 
     public bool isRoll;
 
+    public int powercounter;
+    public Button MinusB;
+    public Button PlusB;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +41,23 @@ public class GameController : MonoBehaviour
             rB = GetComponent<Rigidbody2D>();
             status = 0;
             isRoll = false;
+        powercounter = 4;
         }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (powercounter == 2 || powercounter == 1 || powercounter == 0)
+        {
+            MinusB.interactable = false;
+            PlusB.interactable = false;
+        }
+        if (powercounter == 3)
+        {
+            MinusB.interactable = true;
+            PlusB.interactable = true;
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Move(nextXPos,nextYPos);
@@ -281,9 +297,31 @@ public class GameController : MonoBehaviour
         {
             StartCoroutine(Movement(moveDistance));
             isRoll = false;
+            powercounter++;
         }
         //these are for the rolls
         
     }
+
+    public void Minus()
+    {
+        if (powercounter >= 3)
+        {
+            rB.transform.Translate(-1, 0, 0);
+            powercounter = 0;
+        }
+        
+    }
+
+    public void Plus()
+    {
+        if (powercounter >= 3)
+        {
+            rB.transform.Translate(1, 0, 0);
+            powercounter = 0;
+        }
+        
+    }
 }
+
 
