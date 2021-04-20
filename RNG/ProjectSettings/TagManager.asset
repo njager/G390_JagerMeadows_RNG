@@ -12,6 +12,7 @@ TagManager:
   - respawn
   - onewaytrigger
   - oneway
+  - powerup
   layers:
   - Default
   - TransparentFX
