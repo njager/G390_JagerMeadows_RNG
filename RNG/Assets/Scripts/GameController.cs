@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
     public Button PlusB;
 
     public int coincount;
+    public bool haschosendir;
 
 
     // Start is called before the first frame update
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour
             status = 0;
             isRoll = false;
         powercounter = 4;
+        haschosendir = false;
         }
 
     // Update is called once per frame
@@ -210,35 +212,51 @@ public class GameController : MonoBehaviour
     //THESE ARE THE BUTTONY BOYS!
     public void LeftButton()
     {
-        nextXPos--;
-        rB.rotation = 180;
-        Debug.Log("Next X Position = " + nextXPos);
+        if (haschosendir == false)
+        {
+            haschosendir = true;
+            nextXPos--;
+            rB.rotation = 180;
+            Debug.Log("Next X Position = " + nextXPos);
+        }
     }
 
     public void RightButton()
     {
-        nextXPos++;
-        rB.rotation = 0;
-        Debug.Log("Next X Position = " + nextXPos);
+        if (haschosendir == false)
+        {
+            haschosendir = true;
+            nextXPos++;
+            rB.rotation = 0;
+            Debug.Log("Next X Position = " + nextXPos);
+        }
     }
 
     public void UpButton()
     {
-        nextYPos++;
-        rB.rotation = 90;
-        Debug.Log("Next Y Position = " + nextYPos);
+        if (haschosendir == false)
+        {
+            haschosendir = true;
+            nextYPos++;
+            rB.rotation = 90;
+            Debug.Log("Next Y Position = " + nextYPos);
+        }
     }
 
     public void DownButton()
     {
-        nextYPos--;
-        rB.rotation = 270;
-        Debug.Log("Next Y Position = " + nextYPos);
+        if (haschosendir == false)
+        {
+            haschosendir = true;
+            nextYPos--;
+            rB.rotation = 270;
+            Debug.Log("Next Y Position = " + nextYPos);
+        }
     }
 
     public void RollButton()
     {
-        if (isRoll == false)
+        if (isRoll == false && haschosendir == true)
         {
         moveDistance = Random.Range(1, 6) + status;
         Debug.Log("Move distance = " + moveDistance);
@@ -308,6 +326,7 @@ public class GameController : MonoBehaviour
     {
         if (isMoving == false && isRoll == true)
         {
+            haschosendir = false;
             StartCoroutine(Movement(moveDistance));
             isRoll = false;
             powercounter++;
