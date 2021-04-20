@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
             nextXPos = 0;
             nextYPos = 0;
         }
+        //start moving
         else if (Input.GetKeyDown(KeyCode.J))
         {
             if (isMoving == false)
@@ -38,12 +39,14 @@ public class GameController : MonoBehaviour
                 StartCoroutine(Movement(moveDistance));
             }
         }
+        //choose random distance
         else if (Input.GetKeyDown(KeyCode.K))
         {
             moveDistance = Random.Range(1, 6);
             Debug.Log("Move distance = " + moveDistance);
         }
 
+        //choose movement direction
         if (isMoving == false)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -73,6 +76,7 @@ public class GameController : MonoBehaviour
         } 
     }
 
+    //move set distance, 1 unit per second
     IEnumerator Movement(int distance)
     {
         while (distance > 0)
@@ -89,7 +93,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-
+    //move for the legacy function of choosing
     public void Move(float xPos, float yPos)
     {
         rB.transform.Translate(xPos, yPos, 0, Space.World);
