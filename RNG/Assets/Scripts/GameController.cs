@@ -36,13 +36,16 @@ public class GameController : MonoBehaviour
     public GameObject oneway6;
     public GameObject oneway7;
 
+    public bool isRoll;
+
 
     // Start is called before the first frame update
     void Start()
-    {
-        rB = GetComponent<Rigidbody2D>();
-        status = 0;
-    }
+        {
+            rB = GetComponent<Rigidbody2D>();
+            status = 0;
+            isRoll = false;
+        }
 
     // Update is called once per frame
     void Update()
@@ -244,8 +247,70 @@ public class GameController : MonoBehaviour
 
     public void RollButton()
     {
+        if (isRoll == false)
+        {
         moveDistance = Random.Range(1, 6) + status;
         Debug.Log("Move distance = " + moveDistance);
+        isRoll = true;
+
+            if (moveDistance == 1)
+            {
+                die1.SetActive(true);
+                die2.SetActive(false);
+                die3.SetActive(false);
+                die4.SetActive(false);
+                die5.SetActive(false);
+                die6.SetActive(false);
+            }
+            if (moveDistance == 2)
+            {
+                die2.SetActive(true);
+                die1.SetActive(false);
+                die3.SetActive(false);
+                die4.SetActive(false);
+                die5.SetActive(false);
+                die6.SetActive(false);
+            }
+            if (moveDistance == 3)
+            {
+                die3.SetActive(true);
+                die2.SetActive(false);
+                die1.SetActive(false);
+                die4.SetActive(false);
+                die5.SetActive(false);
+                die6.SetActive(false);
+            }
+            if (moveDistance == 4)
+            {
+                die4.SetActive(true);
+                die2.SetActive(false);
+                die3.SetActive(false);
+                die1.SetActive(false);
+                die5.SetActive(false);
+                die6.SetActive(false);
+            }
+            if (moveDistance == 5)
+            {
+                die5.SetActive(true);
+                die2.SetActive(false);
+                die3.SetActive(false);
+                die4.SetActive(false);
+                die1.SetActive(false);
+                die6.SetActive(false);
+            }
+            if (moveDistance == 6)
+            {
+                die6.SetActive(true);
+                die2.SetActive(false);
+                die3.SetActive(false);
+                die4.SetActive(false);
+                die5.SetActive(false);
+                die1.SetActive(false);
+
+            }
+
+        }
+        
     }
 
     public void GoButton()
@@ -253,62 +318,10 @@ public class GameController : MonoBehaviour
         if (isMoving == false)
         {
             StartCoroutine(Movement(moveDistance));
+            isRoll = false;
         }
         //these are for the rolls
-        if (moveDistance == 1)
-        {
-            die1.SetActive(true);
-            die2.SetActive(false);
-            die3.SetActive(false);
-            die4.SetActive(false);
-            die5.SetActive(false);
-            die6.SetActive(false);
-        }
-        if (moveDistance == 2)
-        {
-            die2.SetActive(true);
-            die1.SetActive(false);
-            die3.SetActive(false);
-            die4.SetActive(false);
-            die5.SetActive(false);
-            die6.SetActive(false);
-        }
-        if (moveDistance == 3)
-        {
-            die3.SetActive(true);
-            die2.SetActive(false);
-            die1.SetActive(false);
-            die4.SetActive(false);
-            die5.SetActive(false);
-            die6.SetActive(false);
-        }
-        if (moveDistance == 4)
-        {
-            die4.SetActive(true);
-            die2.SetActive(false);
-            die3.SetActive(false);
-            die1.SetActive(false);
-            die5.SetActive(false);
-            die6.SetActive(false);
-        }
-        if (moveDistance == 5)
-        {
-            die5.SetActive(true);
-            die2.SetActive(false);
-            die3.SetActive(false);
-            die4.SetActive(false);
-            die1.SetActive(false);
-            die6.SetActive(false);
-        }
-        if (moveDistance == 6)
-        {
-            die6.SetActive(true);
-            die2.SetActive(false);
-            die3.SetActive(false);
-            die4.SetActive(false);
-            die5.SetActive(false);
-            die1.SetActive(false);
-
-        }
+        
     }
 }
+
