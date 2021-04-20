@@ -6,12 +6,14 @@ TagManager:
   tags:
   - Goal
   - Wall
-  - onewall
-  - conveyor
-  - ice
-  - respawn
   - onewaytrigger
   - oneway
+  - respawn
+  - conveyor
+  - ice
+  - onewall
+  - onewaytrigger1
+  - onewaytrigger2
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Background
+  - 
   - 
   - 
   - 

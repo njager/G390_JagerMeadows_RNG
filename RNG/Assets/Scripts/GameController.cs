@@ -27,14 +27,6 @@ public class GameController : MonoBehaviour
     public GameObject die5;
     public GameObject die6;
 
-    //oneway colliders
-    public GameObject oneway1;
-    public GameObject oneway2;
-    public GameObject oneway3;
-    public GameObject oneway4;
-    public GameObject oneway5;
-    public GameObject oneway6;
-    public GameObject oneway7;
 
     public bool isRoll;
 
@@ -175,19 +167,7 @@ public class GameController : MonoBehaviour
             status = -1;
             //StartCoroutine(Movement(moveDistance));
         }
-        //sets oneway to deactive
-        if (collision.CompareTag("onewaytrigger"))
-        {
-            oneway1.SetActive(false);
-            oneway2.SetActive(false);
-            oneway3.SetActive(false);
-            oneway4.SetActive(false);
-            oneway5.SetActive(false);
-            oneway6.SetActive(false);
-            oneway7.SetActive(false);
-
-
-        }
+        
     }
 
     
@@ -195,26 +175,8 @@ public class GameController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collided with something");
-        
-        
     }
-
-    //reactivates oneway
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        status = 0;
-        //if (collision.gameObject.tag == "onewaytrigger")
-       // {
-            oneway1.SetActive(true);
-            oneway2.SetActive(true);
-            oneway3.SetActive(true);
-            oneway4.SetActive(true);
-            oneway5.SetActive(true);
-            oneway6.SetActive(true);
-            oneway7.SetActive(true);
-      // }
-    }
-
+ 
 
     //THESE ARE THE BUTTONY BOYS!
     public void LeftButton()
