@@ -242,10 +242,14 @@ public class GameController : MonoBehaviour
         Debug.Log("Next Y Position = " + nextYPos);
     }
 
-    public void GoButton()
+    public void RollButton()
     {
         moveDistance = Random.Range(1, 6) + status;
         Debug.Log("Move distance = " + moveDistance);
+    }
+
+    public void GoButton()
+    {
         if (isMoving == false)
         {
             StartCoroutine(Movement(moveDistance));
