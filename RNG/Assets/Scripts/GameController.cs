@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
     public Button PlusB;
 
     public int coincount;
-    public bool haschosendir;
+    //public bool haschosendir;
 
 
     // Start is called before the first frame update
@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
             status = 0;
             isRoll = false;
         powercounter = 4;
-        haschosendir = false;
+        //haschosendir = false;
         }
 
     // Update is called once per frame
@@ -212,9 +212,9 @@ public class GameController : MonoBehaviour
     //THESE ARE THE BUTTONY BOYS!
     public void LeftButton()
     {
-        if (haschosendir == false)
+        //if (haschosendir == false)
         {
-            haschosendir = true;
+            //haschosendir = true;
             nextXPos--;
             rB.rotation = 180;
             Debug.Log("Next X Position = " + nextXPos);
@@ -223,9 +223,9 @@ public class GameController : MonoBehaviour
 
     public void RightButton()
     {
-        if (haschosendir == false)
+        //if (haschosendir == false)
         {
-            haschosendir = true;
+            //haschosendir = true;
             nextXPos++;
             rB.rotation = 0;
             Debug.Log("Next X Position = " + nextXPos);
@@ -234,9 +234,9 @@ public class GameController : MonoBehaviour
 
     public void UpButton()
     {
-        if (haschosendir == false)
+        //if (haschosendir == false)
         {
-            haschosendir = true;
+            //haschosendir = true;
             nextYPos++;
             rB.rotation = 90;
             Debug.Log("Next Y Position = " + nextYPos);
@@ -245,9 +245,9 @@ public class GameController : MonoBehaviour
 
     public void DownButton()
     {
-        if (haschosendir == false)
+        //if (haschosendir == false)
         {
-            haschosendir = true;
+           // haschosendir = true;
             nextYPos--;
             rB.rotation = 270;
             Debug.Log("Next Y Position = " + nextYPos);
@@ -256,7 +256,7 @@ public class GameController : MonoBehaviour
 
     public void RollButton()
     {
-        if (isRoll == false && haschosendir == true)
+        if (isRoll == false )
         {
         moveDistance = Random.Range(1, 6) + status;
         Debug.Log("Move distance = " + moveDistance);
@@ -326,7 +326,7 @@ public class GameController : MonoBehaviour
     {
         if (isMoving == false && isRoll == true)
         {
-            haschosendir = false;
+            //haschosendir = false;
             StartCoroutine(Movement(moveDistance));
             isRoll = false;
             powercounter++;
