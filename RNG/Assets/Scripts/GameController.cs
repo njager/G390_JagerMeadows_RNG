@@ -19,12 +19,22 @@ public class GameController : MonoBehaviour
     public float nextYPos;
     public int status;
 
+    //dice graphics
     public GameObject die1;
     public GameObject die2;
     public GameObject die3;
     public GameObject die4;
     public GameObject die5;
     public GameObject die6;
+
+    //oneway colliders
+    public GameObject oneway1;
+    public GameObject oneway2;
+    public GameObject oneway3;
+    public GameObject oneway4;
+    public GameObject oneway5;
+    public GameObject oneway6;
+    public GameObject oneway7;
 
 
     // Start is called before the first frame update
@@ -102,7 +112,26 @@ public class GameController : MonoBehaviour
             Debug.Log("Distance left = " + distance);
             yield return delay;
         }
-        if(distance == 0)
+        //conveyor move
+        if (status == 1)
+        {
+            isMoving = true;
+            rB.transform.Translate(1, 0, 0); //could be 2?
+            status = 0;
+            Debug.Log("Distance left = " + distance);
+            yield return delay;
+        }
+        //ice move
+        if (status == -1)
+        {
+            isMoving = true;
+            rB.transform.Translate(-1, 0, 0);
+            status = 0;
+            Debug.Log("Distance left = " + distance);
+            yield return delay;
+        }
+
+        if (distance == 0)
         {
             isMoving = false;
         }
@@ -117,6 +146,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Current X and Y = " + currentXPos + "," + currentYPos);
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Entered a trigger");
@@ -125,22 +155,35 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Entered the goal");
         }
-
+        //collide to respawn
         if (collision.CompareTag("respawn"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        //collide with conveyor
         if (collision.CompareTag ("conveyor"))
         {
-            status = 2;
+            status = 1;
+            //StartCoroutine(Movement(moveDistance));
         }
+        //collide with ice
         if (collision.CompareTag("ice"))
         {
             status = -1;
+            //StartCoroutine(Movement(moveDistance));
         }
+        //sets oneway to deactive
         if (collision.CompareTag("onewaytrigger"))
         {
-            //when in trigger onewaycollider, make oneway into trigger
+            oneway1.SetActive(false);
+            oneway2.SetActive(false);
+            oneway3.SetActive(false);
+            oneway4.SetActive(false);
+            oneway5.SetActive(false);
+            oneway6.SetActive(false);
+            oneway7.SetActive(false);
+
+
         }
     }
 
@@ -153,13 +196,20 @@ public class GameController : MonoBehaviour
         
     }
 
+    //reactivates oneway
     private void OnCollisionExit2D(Collision2D collision)
     {
         status = 0;
-        if (collision.gameObject.tag == "onewaytrigger")
-        {
-            //when not in, dont
-        }
+        //if (collision.gameObject.tag == "onewaytrigger")
+       // {
+            oneway1.SetActive(true);
+            oneway2.SetActive(true);
+            oneway3.SetActive(true);
+            oneway4.SetActive(true);
+            oneway5.SetActive(true);
+            oneway6.SetActive(true);
+            oneway7.SetActive(true);
+      // }
     }
 
 
@@ -200,7 +250,7 @@ public class GameController : MonoBehaviour
         {
             StartCoroutine(Movement(moveDistance));
         }
-
+        //these are for the rolls
         if (moveDistance == 1)
         {
             die1.SetActive(true);
