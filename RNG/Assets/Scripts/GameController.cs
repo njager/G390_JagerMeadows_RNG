@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameController : MonoBehaviour
     public float currentYPos;
     public float nextXPos;
     public float nextYPos;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -115,5 +117,43 @@ public class GameController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collided with something");
+    }
+
+    public void LeftButton()
+    {
+        nextXPos--;
+        rB.rotation = 180;
+        Debug.Log("Next X Position = " + nextXPos);
+    }
+
+    public void RightButton()
+    {
+        nextXPos++;
+        rB.rotation = 0;
+        Debug.Log("Next X Position = " + nextXPos);
+    }
+
+    public void UpButton()
+    {
+        nextYPos++;
+        rB.rotation = 90;
+        Debug.Log("Next Y Position = " + nextYPos);
+    }
+
+    public void DownButton()
+    {
+        nextYPos--;
+        rB.rotation = 270;
+        Debug.Log("Next Y Position = " + nextYPos);
+    }
+
+    public void GoButton()
+    {
+        moveDistance = Random.Range(1, 6);
+        Debug.Log("Move distance = " + moveDistance);
+        if (isMoving == false)
+        {
+            StartCoroutine(Movement(moveDistance));
+        }
     }
 }
