@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
     public Button MinusB;
     public Button PlusB;
 
+    public int coincount;
+
 
     // Start is called before the first frame update
     void Start()
@@ -164,6 +166,11 @@ public class GameController : MonoBehaviour
 
         if (collision.CompareTag("Goal"))
         {
+            if (coincount == 4)
+            {
+                Application.Quit();
+            }
+            
             Debug.Log("Entered the goal");
         }
         //collide to respawn
@@ -182,6 +189,12 @@ public class GameController : MonoBehaviour
         {
             status = -1;
             //StartCoroutine(Movement(moveDistance));
+        }
+
+        if (collision.CompareTag("powerup"))
+        {
+            Destroy(collision.gameObject);
+            coincount ++;
         }
         
     }
