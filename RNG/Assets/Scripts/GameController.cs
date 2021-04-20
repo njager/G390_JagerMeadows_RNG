@@ -315,7 +315,7 @@ public class GameController : MonoBehaviour
 
     public void GoButton()
     {
-        if (isMoving == false)
+        if (isMoving == false && isRoll == true)
         {
             StartCoroutine(Movement(moveDistance));
             isRoll = false;

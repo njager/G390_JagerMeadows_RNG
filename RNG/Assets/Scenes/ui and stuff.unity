@@ -1986,6 +1986,7 @@ MonoBehaviour:
   oneway5: {fileID: 1321493440}
   oneway6: {fileID: 2043934024}
   oneway7: {fileID: 1608958763}
+  isRoll: 0
 --- !u!4 &571178443
 Transform:
   m_ObjectHideFlags: 0
@@ -2396,7 +2397,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: d3c8ff5e895d5044791bff6949c8f56a, type: 3}
+  m_Sprite: {fileID: 3833992471113479370, guid: 69cf1343ed07f924f97cee89108a4684, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2587,7 +2588,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: d3c8ff5e895d5044791bff6949c8f56a, type: 3}
+  m_Sprite: {fileID: 212145101358470147, guid: 69cf1343ed07f924f97cee89108a4684, type: 3}
   m_Color: {r: 0.93177176, g: 1, b: 0.40251565, a: 1}
   m_FlipX: 0
   m_FlipY: 0
